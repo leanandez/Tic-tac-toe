@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Ta Te Ti</title>
+</head>
+<body>
+    <div class="game">
+    <section>
+    <div id="1" class="square square1" name="1"></div>
+    <div id="2" class="square square2"></div>
+    <div id="3" class="square square3"></div>
+    <div id="4" class="square square4"></div>
+    <div id="5" class="square square5"></div>
+    <div id="6" class="square square6"></div>
+    <div id="7" class="square square7"></div>
+    <div id="8" class="square square8"></div>
+    <div id="9" class="square square9"></div>    
+    </section>
+
+    <div class="showWinner" id="showWinner">
+    <h1 class="winner" id="winner"></h1>
+    <input type="button" value="Restart" class="restart" id="buttonRestart"  onclick="location.reload()">
+        
+    </div>
+
+
+    <article class="score">
+        <h1>SCORE:</h1>
+        <div class="scoreX"><h2>X: </h2><h2 id="scoreX"></h2></div>
+        <div class="scoreO"><h2>O: </h2><h2 id="scoreO"></h2></div>
+                
+    </article>
+</div>
+
+    <div class="buttonR">
+        <button id="buttonReset" class="buttonReset" onsubmit="localStorage.clear()" onclick="location.reload()">RESET GAME</button>
+    </div> 
+    
+
+  
+
+
+    <script src="app.js"></script>
+</body>
+</html>

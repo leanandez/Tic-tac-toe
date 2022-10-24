@@ -1,0 +1,109 @@
+
+
+.game{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+section{
+    background-color: white;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    height: 30em;
+    width: 30em;
+    position: absolute;
+    top: 8px;
+    left: 143px;
+    z-index:3 ;
+}
+
+.square{
+    border: 2px black solid;
+    height: auto;
+    width: auto;
+    background-color: aquamarine;
+    z-index: inherit;
+    
+}
+
+.circulo{
+    max-width: 9em;
+    max-height: 9em;
+}
+
+.equis{
+    max-width: 9em;
+    max-height: 9em;
+}
+
+
+.score{
+    font-size: 30px;
+}
+.scoreX{
+    display: flex;
+}
+.scoreO{
+    display: flex;
+}
+
+
+
+.showWinner{
+    background-color: blue;
+    position: absolute;
+    top: 8px;
+    left: 143px;
+    height: 30em;
+   
+    width: 30em;
+    opacity: 0.8;
+    z-index: 1;
+    
+    
+
+}
+
+.restart{
+    background-color: black;
+    color: white;
+    height: 100px;
+    width: 150px;
+    font-size: 30px;
+    border: red solid 2px;
+    margin-left: 165px;
+
+}
+
+.restart:hover{
+    background-color: red;
+}
+.winner{
+    color: white;
+    font-size: 100px;
+    text-align: center; 
+    padding-top: 100px;
+}
+.show{
+    z-index: 4;
+}
+
+
+.buttonR{
+    position: absolute;
+    top: 550px;
+    left: 300px;
+    
+}
+
+.buttonReset{
+    height: 75px;
+    width: 200px;
+    background-color: yellow;
+    font-size: 30px;
+}
+
+.buttonReset:hover{
+    background-color: red;
+}
