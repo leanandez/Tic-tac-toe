@@ -42,12 +42,14 @@ let cuenta = 0
 let cuentaCirculo = {
     "numeros": [],
     "nombre": "scoreO",
-    "win": "O Wins!"
+    "win": "O Wins!",
+    "tie": "It is a tie!"
 }
 let cuentaEquis = {
     "numeros": [],
     "nombre": "scoreX",
-    "win":"X Wins!"
+    "win":"X Wins!",
+    "tie": "It is a tie!"
 }
 
 //Recupero el SCORE general del localStorage
@@ -98,7 +100,9 @@ function win(array, score, divScore) {
     let win369 = (array.numeros.includes(3) && array.numeros.includes(6) && array.numeros.includes(9) || array.numeros.includes(NaN)) ? `${array.nombre}` : 0
     let win159 = (array.numeros.includes(1) && array.numeros.includes(5) && array.numeros.includes(9) || array.numeros.includes(NaN)) ? `${array.nombre}` : 0
     let win753 = (array.numeros.includes(7) && array.numeros.includes(5) && array.numeros.includes(3) || array.numeros.includes(NaN)) ? `${array.nombre}` : 0
-  
+    let nowin = (array.numeros.length === 5) ? `${array.nombre}` : 0
+
+
     switch (`${array.nombre}`) {
         case win123:
             showWinner.classList.add("show")
@@ -159,7 +163,11 @@ function win(array, score, divScore) {
             divScore.innerHTML = `${score}`
         break;
     
+        case nowin: 
+            showWinner.classList.add("show")
+            winner.innerHTML =`${array.tie}`
         default:
+            
             break;
     }
 
