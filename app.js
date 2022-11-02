@@ -14,11 +14,13 @@ let divScoreX = document.getElementById("scoreX")
 let divScoreO = document.getElementById("scoreO")
 
 
-
+let whoStarts = document.getElementById("whoStarts")
 let showWinner = document.getElementById("showWinner")
 let winner = document.getElementById("winner")
 
+
 let buttonReset = document.getElementById("buttonReset")
+let buttonRestart = document.getElementById("buttonRestart")
 
 
 //ASigno los eventos
@@ -34,6 +36,7 @@ square8.addEventListener("click", userAction.bind(undefined, square8))
 square9.addEventListener("click", userAction.bind(undefined, square9))
 
 buttonReset.onclick = resetGame
+buttonRestart.addEventListener("click", restartGame)
 
 
 
@@ -52,9 +55,18 @@ let cuentaEquis = {
     "tie": "It is a tie!"
 }
 
+//Esta cuenta se define para que una vez arranque X y luego arranque O, y asi se vayan alternando
+let cuentaStart= {
+    "cuenta": (localStorage.getItem("cuentaStart") == null) ? 0 : Number(localStorage.getItem("cuentaStart")),
+    "xStart": "X starts!",
+    "oStart": "O starts!"
+}
+
+
 //Recupero el SCORE general del localStorage
 let scoreX= (localStorage.getItem("scoreX") == null) ? 0 :Number(localStorage.getItem("scoreX"))
 let scoreO= (localStorage.getItem("scoreO") == null) ? 0 :Number(localStorage.getItem("scoreO"))
+
 
 
 divScoreX.innerHTML = `${scoreX}`
@@ -62,9 +74,23 @@ divScoreO.innerHTML = `${scoreO}`
 
 
 
+
 //Funciones
 
 
+if(cuentaStart.cuenta == 0 || cuentaStart.cuenta %2== 0){
+    whoStarts.innerHTML="X starts!"
+} else{
+    whoStarts.innerHTML="O starts!"
+}
+
+
+
+function restartGame(){
+    cuentaStart.cuenta++
+    localStorage.setItem("cuentaStart", cuentaStart.cuenta)
+    
+}
 
 function resetGame(){
     localStorage.clear()
@@ -73,8 +99,11 @@ function resetGame(){
 }
 
 function userAction(square) {
+    whoStarts.classList.add("hideWhoStarts")
 
-    if (square.innerHTML == "") {
+    if(cuentaStart.cuenta == 0 || cuentaStart.cuenta %2== 0){
+        
+        if (square.innerHTML == "") {
         if (cuenta % 2 == 0 || cuenta == 0) {
             square.innerHTML = `<img src="equis.png" alt="" id="equis" class="equis">`
             cuentaEquis.numeros.push(Number(square.id))
@@ -87,7 +116,29 @@ function userAction(square) {
             cuenta++
         }
     }
+    }
+    if(cuentaStart.cuenta%2 !=0){
+       
+        if (square.innerHTML == "") {
+            if (cuenta % 2 == 0 || cuenta == 0) {
+                square.innerHTML = `<img src="circulo.png" alt="" id="circulo" class="circulo">`
+                cuentaCirculo.numeros.push(Number(square.id))
+                win(cuentaCirculo, scoreO, divScoreO)
+                cuenta++
+                
+            } else {
+                square.innerHTML = `<img src="equis.png" alt="" id="equis" class="equis">`
+                cuentaEquis.numeros.push(Number(square.id))
+                win(cuentaEquis, scoreX, divScoreX)
+                cuenta++
+            }
+        }
+    }
+    
+       
 }
+
+
 
 
 
